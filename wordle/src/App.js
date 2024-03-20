@@ -17,7 +17,7 @@ function App() {
   var record = 0;
 
   const getWords = async () => {
-    var num =Math.floor(Math.random() * 2309);
+    var num = Math.floor(Math.random() * 2309);
     word = words[num];
     console.log(word);
     
@@ -67,7 +67,7 @@ function App() {
         var cell = document.getElementById(row + "." + col);
         
         
-        if(word.includes(cell.value.toLowerCase()) && cell.value.toLowerCase() !== word.charAt(col - 1) && cell.value !== ""  ){
+        if(word.includes(cell.value.toLowerCase()) && cell.value.toLowerCase() !== word.charAt(col - 1) && cell.value !== "" ){
           cell.style.backgroundColor = "yellow";
           cell.ariaReadOnly = true;
         }
@@ -135,32 +135,32 @@ function App() {
           <input className="game-board-cell" maxlength="1" id="1.5"/>
         </div>
         <div className="game-board-row" id="2">
-          <input className="game-board-cell" maxlength="1"  id="2.1"/>
-          <input className="game-board-cell" maxlength="1"  id="2.2"/>
-          <input className="game-board-cell" maxlength="1"  id="2.3"/>
-          <input className="game-board-cell" maxlength="1"  id="2.4"/>
-          <input className="game-board-cell" maxlength="1"  id="2.5"/>
+          <input className="game-board-cell" maxlength="1" id="2.1"/>
+          <input className="game-board-cell" maxlength="1" id="2.2"/>
+          <input className="game-board-cell" maxlength="1" id="2.3"/>
+          <input className="game-board-cell" maxlength="1" id="2.4"/>
+          <input className="game-board-cell" maxlength="1" id="2.5"/>
         </div>
         <div className="game-board-row" id="3">
-          <input className="game-board-cell" maxlength="1"  id="3.1"/>
-          <input className="game-board-cell" maxlength="1"  id="3.2"/>
-          <input className="game-board-cell" maxlength="1"  id="3.3"/>
-          <input className="game-board-cell" maxlength="1"  id="3.4"/>
-          <input className="game-board-cell" maxlength="1"  id="3.5"/>
+          <input className="game-board-cell" maxlength="1" id="3.1"/>
+          <input className="game-board-cell" maxlength="1" id="3.2"/>
+          <input className="game-board-cell" maxlength="1" id="3.3"/>
+          <input className="game-board-cell" maxlength="1" id="3.4"/>
+          <input className="game-board-cell" maxlength="1" id="3.5"/>
         </div>
         <div className="game-board-row" id="4">
-          <input className="game-board-cell" maxlength="1"  id="4.1"/>
-          <input className="game-board-cell" maxlength="1"  id="4.2"/>
-          <input className="game-board-cell" maxlength="1"  id="4.3"/>
-          <input className="game-board-cell" maxlength="1"  id="4.4"/>
-          <input className="game-board-cell" maxlength="1"  id="4.5"/>
+          <input className="game-board-cell" maxlength="1" id="4.1"/>
+          <input className="game-board-cell" maxlength="1" id="4.2"/>
+          <input className="game-board-cell" maxlength="1" id="4.3"/>
+          <input className="game-board-cell" maxlength="1" id="4.4"/>
+          <input className="game-board-cell" maxlength="1" id="4.5"/>
         </div>
         <div className="game-board-row" id="5">
-          <input className="game-board-cell" maxlength="1"  id="5.1"/>
-          <input className="game-board-cell" maxlength="1"  id="5.2"/>
-          <input className="game-board-cell" maxlength="1"  id="5.3"/>
-          <input className="game-board-cell" maxlength="1"  id="5.4"/>
-          <input className="game-board-cell" maxlength="1"  id="5.5"/>
+          <input className="game-board-cell" maxlength="1" id="5.1"/>
+          <input className="game-board-cell" maxlength="1" id="5.2"/>
+          <input className="game-board-cell" maxlength="1" id="5.3"/>
+          <input className="game-board-cell" maxlength="1" id="5.4"/>
+          <input className="game-board-cell" maxlength="1" id="5.5"/>
         </div>
         <div className="game-board-row">
           <button className="game-board-cell" onClick={Submit}>Submit</button>
