@@ -15,9 +15,6 @@ function App() {
   var row = 1;
   var col= 0;
   var record = 0;
-  
-
-  
 
   const getWords = async () => {
     var num =Math.floor(Math.random() * 2309);
@@ -70,7 +67,7 @@ function App() {
         var cell = document.getElementById(row + "." + col);
         
         
-         if(word.includes(cell.value) && cell.value.toLowerCase() !== word.charAt(col - 1) && cell.value !== ""  ){
+        if(word.includes(cell.value.toLowerCase()) && cell.value.toLowerCase() !== word.charAt(col - 1) && cell.value !== ""  ){
           cell.style.backgroundColor = "yellow";
           cell.ariaReadOnly = true;
         }
@@ -93,15 +90,20 @@ function App() {
         }
       }
 
+      console.log("this works");
+
+      guessesLeft = guessesLeft - 1;
+      guessesUsed = guessesUsed + 1;
+
       if(document.getElementById(row + "." + 1).value.toLowerCase() === word.charAt(0) && document.getElementById(row + "." + 1).value !== "" && document.getElementById(row + "." + 2).value.toLowerCase() === word.charAt(1) && document.getElementById(row + "." + 2).value !== ""  && document.getElementById(row + "." + 3).value.toLowerCase() === word.charAt(2) && document.getElementById(row + "." + 3).value !== "" &&document.getElementById(row + "." + 4).value.toLowerCase() === word.charAt(3) && document.getElementById(row + "." + 4).value !== ""  && document.getElementById(row + "." + 5).value.toLowerCase() === word.charAt(4) && document.getElementById(row + "." + 4).value !== "" ){
         record = record + 1;
         window.alert("You win! The word was " + word + "!" + " Your record is " + record);
       } else if(guessesLeft === 0){ 
         record = 0;
+        window.alert("You lost! The word was " + word + "!" + " Your record is " + record);
       }
 
-    guessesLeft = guessesLeft - 1;
-    guessesUsed = guessesUsed + 1;
+    
     row = row + 1;
     col = col + 1;
 
