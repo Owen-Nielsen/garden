@@ -1,0 +1,83 @@
+.App {
+  text-align: center;
+}
+
+.flexbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.flexbox-container-rows {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 100vh;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-grow: 1;
+}
+
+.box {
+  flex-grow: 1;
+  margin: 5px;
+  background-color: #f0f0f0;
+}
+
+div {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3vh;
+  position: sticky;
+  flex-grow: 1;
+}
+
+.header > div {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 200px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.sidebar > div {
+  margin: 10px 0;
+}
+
+.signInModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000;
+}
