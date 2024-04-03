@@ -46,10 +46,50 @@ function App() {
   };
 
 
+  var startTime; // to keep track of the start time
+  var stopwatchInterval; // to keep track of the interval
+  var elapsedPausedTime = 0; // to keep track of the elapsed time while stopped
+  var displayTime; // to keep track of the formatted time
+
+  function startStopwatch() {
+    if (!stopwatchInterval) {
+      startTime = new Date().getTime() - elapsedPausedTime; // get the starting time by subtracting the elapsed paused time from the current time
+      stopwatchInterval = setInterval(updateStopwatch, 1000); // update every second
+    }
+  }
+
+  function stopStopwatch() {
+    clearInterval(stopwatchInterval); // stop the interval
+    elapsedPausedTime = new Date().getTime() - startTime; // calculate elapsed paused time
+    stopwatchInterval = null; // reset the interval variable
+  }
+
+  function resetStopwatch() {
+    stopStopwatch(); // stop the interval
+    elapsedPausedTime = 0; // reset the elapsed paused time variable
+    document.getElementById("stopwatch").innerHTML = "00:00:00"; // reset the display
+  }
+
+  function updateStopwatch() {
+    var currentTime = new Date().getTime(); // get current time in milliseconds
+    var elapsedTime = currentTime - startTime; // calculate elapsed time in milliseconds
+    var seconds = Math.floor(elapsedTime / 1000) % 60; // calculate seconds
+    var minutes = Math.floor(elapsedTime / 1000 / 60) % 60; // calculate minutes
+    var hours = Math.floor(elapsedTime / 1000 / 60 / 60); // calculate hours
+    displayTime = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds); // format display time
+    document.getElementById("stopwatch").innerHTML = displayTime; // update the display
+  }
+  
+  function pad(number) {
+    // add a leading zero if the number is less than 10
+    return (number < 10 ? "0" : "") + number;
+  }
 
   const Reset = async () => {
     resetBoxes();
     getWords();
+    resetStopwatch();
+    startStopwatch();
   };
 
   useEffect(() => {
@@ -97,10 +137,14 @@ function App() {
 
       if(document.getElementById(row + "." + 1).value.toLowerCase() === word.charAt(0) && document.getElementById(row + "." + 1).value !== "" && document.getElementById(row + "." + 2).value.toLowerCase() === word.charAt(1) && document.getElementById(row + "." + 2).value !== ""  && document.getElementById(row + "." + 3).value.toLowerCase() === word.charAt(2) && document.getElementById(row + "." + 3).value !== "" &&document.getElementById(row + "." + 4).value.toLowerCase() === word.charAt(3) && document.getElementById(row + "." + 4).value !== ""  && document.getElementById(row + "." + 5).value.toLowerCase() === word.charAt(4) && document.getElementById(row + "." + 4).value !== "" ){
         record = record + 1;
-        window.alert("You win! The word was " + word + "!" + " Your record is " + record);
+        startStopwatch();
+        window.alert("You won in "+ displayTime +"! The word was " + word + "!" + " Your record is " + record);
+        
       } else if(guessesLeft === 0){ 
         record = 0;
         window.alert("You lost! The word was " + word + "!" + " Your record is " + record);
+        guessesLeft = 5;
+        guessesUsed = 0;
       }
 
     
@@ -116,7 +160,7 @@ function App() {
     <div className="App">
       <div className="top-bar">
         <div className="user-profile">User Profile</div>
-        <Auth />
+        <div className="stopwatch" id="stopwatch">00:00:00</div>
       </div>
       <div className="info-grid">
         <button className="grid-item">Record</button>
