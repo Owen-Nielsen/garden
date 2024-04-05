@@ -8,6 +8,7 @@ import {Auth} from './components/auth.js';
 
 
 function App() {
+  
 
   var guessesLeft = 5;
   var guessesUsed = 0;
@@ -16,12 +17,15 @@ function App() {
   var col= 0;
   var record = 0;
 
+  
+
   const getWords = async () => {
     var num = Math.floor(Math.random() * 2309);
     word = words[num];
     console.log(word);
     
   }
+  
 
   const resetBoxes = async () => {
     var guessesLeft = 5;
